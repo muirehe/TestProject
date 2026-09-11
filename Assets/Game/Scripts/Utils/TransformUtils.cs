@@ -3,7 +3,7 @@ using UnityEngine;
 using VContainer;
 using VContainer.Unity;
 
-namespace Game.Scripts.Utils
+namespace Utils
 {
     public static class TransformUtils
     {

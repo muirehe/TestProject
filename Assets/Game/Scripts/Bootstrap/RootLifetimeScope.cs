@@ -1,10 +1,13 @@
-using Game.Scripts.Presentation;
+using Infrastructure.GameStateMachine;
+using Infrastructure.GameStateMachine.States;
+using Infrastructure.SceneSystem;
 using MessagePipe;
+using Presentation;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
 
-namespace Game.Scripts.Bootstrap
+namespace Bootstrap
 {
     public class RootLifetimeScope : LifetimeScope
     {
@@ -40,11 +43,17 @@ namespace Game.Scripts.Bootstrap
 
         private void RegisterStates(IContainerBuilder builder)
         {
-            //builder.Register<>(Lifetime.Singleton).AsImplementedInterfaces();
+            builder.Register<IGameStateMachine, GameStateMachine>(Lifetime.Singleton).As<IInitializable>();
+            builder.Register<BootstrapState>(Lifetime.Singleton);
+            builder.Register<MenuState>(Lifetime.Singleton);
+            builder.Register<GameplayState>(Lifetime.Singleton);
+            builder.Register<ResultsState>(Lifetime.Singleton);
+
         }
 
         private void RegisterServices(IContainerBuilder builder)
         {
+            builder.Register<SceneLoader>(Lifetime.Singleton);
         }
     }
 }

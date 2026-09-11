@@ -1,4 +1,4 @@
-namespace Game.Scripts.Utils
+namespace Utils
 {
     public interface IRandomByWeight
     {

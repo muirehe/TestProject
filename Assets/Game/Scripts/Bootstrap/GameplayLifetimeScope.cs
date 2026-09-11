@@ -1,7 +1,7 @@
 ﻿using VContainer;
 using VContainer.Unity;
 
-namespace Game.Scripts.Bootstrap
+namespace Bootstrap
 {
     public class GameplayLifetimeScope : LifetimeScope
     {

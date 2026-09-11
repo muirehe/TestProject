@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Game.Scripts.Utils
+namespace Utils
 {
     public static class RandomUtils
     {

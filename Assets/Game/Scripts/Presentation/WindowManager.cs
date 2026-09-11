@@ -4,7 +4,7 @@ using UnityEngine;
 using VContainer;
 using VContainer.Unity;
 
-namespace Game.Scripts.Presentation
+namespace Presentation
 {
     public interface IWindow
     {
