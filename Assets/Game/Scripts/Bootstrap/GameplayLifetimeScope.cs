@@ -1,4 +1,5 @@
-﻿using VContainer;
+﻿using Modules;
+using VContainer;
 using VContainer.Unity;
 
 namespace Bootstrap
