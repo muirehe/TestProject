@@ -8,9 +8,9 @@ namespace Infrastructure.SceneSystem
 {
     public class SceneLoader
     {
-        public static string Boot = nameof(Boot);
-        public static string Menu = nameof(Menu);
-        public static string Gameplay = nameof(Gameplay);
+        public const string Boot = nameof(Boot);
+        public const string Menu = nameof(Menu);
+        public const string Gameplay = nameof(Gameplay);
 
         public async UniTask<bool> LoadAsync(string sceneName, IProgress<float> progress, CancellationToken token)
         {
@@ -28,23 +28,6 @@ namespace Infrastructure.SceneSystem
             }
 
             progress?.Report(1f);
-            return true;
-        }
-        
-        public async UniTask<bool> LoadAsync(string sceneName, CancellationToken token)
-        {
-            var operation = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Single);
-            if (operation == null)
-            {
-                Debug.LogError($"[SceneLoader] Scene '{sceneName}' not found in build settings.");
-                return false;
-            }
-
-            while (!operation.isDone)
-            {
-                await UniTask.Yield(PlayerLoopTiming.Update, token);
-            }
-
             return true;
         }
     }

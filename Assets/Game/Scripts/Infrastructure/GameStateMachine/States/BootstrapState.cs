@@ -1,4 +1,3 @@
-using Infrastructure.ConfigSystem;
 using Infrastructure.SaveSystem;
 
 namespace Infrastructure.GameStateMachine.States
