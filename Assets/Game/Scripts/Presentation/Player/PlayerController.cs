@@ -1,4 +1,3 @@
-using System.Linq;
 using Configs;
 using Infrastructure.ConfigSystem;
 using Infrastructure.Input;
@@ -11,6 +10,7 @@ namespace Presentation.Player
     {
         [SerializeField] private CharacterController characterController;
         [SerializeField] private Transform cameraRoot;
+        [SerializeField] private Camera playerCamera;
         [SerializeField] private Transform tr;
 
         private float _pitch;
@@ -24,6 +24,11 @@ namespace Presentation.Player
         {
             _gameInput = gameInput;
             _inputSettings = configProvider.GetSingle<InputSettings>();
+        }
+
+        private void Start()
+        {
+            playerCamera.fieldOfView = _inputSettings.FOV;
         }
 
         private void Update()
@@ -44,7 +49,10 @@ namespace Presentation.Player
         private void Move()
         {
             var input = _gameInput.Player.Move.ReadValue<Vector2>();
-            var horizontal = (tr.right * input.x + tr.forward * input.y) * _inputSettings.MoveSpeed;
+            var speed = _gameInput.Player.Sprint.IsPressed()
+                ? _inputSettings.SprintSpeedMultiplier * _inputSettings.MoveSpeed
+                : _inputSettings.MoveSpeed;
+            var horizontal = (tr.right * input.x + tr.forward * input.y) * speed;
 
             if (characterController.isGrounded && _verticalVelocity < 0f)
                 _verticalVelocity = _inputSettings.GroundedVelocity;
