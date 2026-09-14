@@ -31,11 +31,12 @@ namespace Infrastructure.GameStateMachine
             state.Enter();
         }
 
-        private IState Switch<TState>() where TState : IState
+        private TState Switch<TState>() where TState : IState
         {
             _current?.Exit();
-            _current = _objectResolver.Resolve<TState>();
-            return _current;
+            var state = _objectResolver.Resolve<TState>();
+            _current = state;
+            return state;
         }
     }
 }

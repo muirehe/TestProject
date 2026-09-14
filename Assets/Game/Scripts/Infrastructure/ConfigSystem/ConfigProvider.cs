@@ -17,7 +17,7 @@ namespace Infrastructure.ConfigSystem
 
         private void LoadAllConfigs()
         {
-            var allConfigs = Resources.LoadAll<DefinitionConfig>("");
+            var allConfigs = Resources.LoadAll<DefinitionConfig>("Configs");
 
             foreach (var config in allConfigs)
             {

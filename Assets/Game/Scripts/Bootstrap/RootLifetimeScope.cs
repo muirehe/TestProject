@@ -1,3 +1,5 @@
+using Gameplay.Battle;
+using Gameplay.Combat;
 using Infrastructure.ConfigSystem;
 using Infrastructure.GameStateMachine;
 using Infrastructure.GameStateMachine.States;
@@ -5,7 +7,7 @@ using Infrastructure.Input;
 using Infrastructure.SaveSystem;
 using Infrastructure.SceneSystem;
 using MessagePipe;
-using Modules;
+using Meta;
 using Presentation;
 using UnityEngine;
 using VContainer;
@@ -19,47 +21,43 @@ namespace Bootstrap
 
         protected override void Configure(IContainerBuilder builder)
         {
-            if (windowManager != null)
-            {
-                var uiRoot = Instantiate(windowManager);
-                DontDestroyOnLoad(uiRoot);
-                builder.RegisterComponent(uiRoot);
-                builder.RegisterBuildCallback(resolver => resolver.InjectGameObject(uiRoot.gameObject));
-            }
-
-            RegisterMessagePipe(builder);
-            RegisterModules(builder);
+            builder.RegisterComponentInNewPrefab(windowManager, Lifetime.Singleton).DontDestroyOnLoad();
+            builder.RegisterBuildCallback(c => c.Resolve<WindowManager>());
+            
+            RegisterInfrastructure(builder);
+            RegisterMeta(builder);
+            RegisterMessages(builder);
             RegisterStates(builder);
-            RegisterServices(builder);
         }
 
-        private void RegisterMessagePipe(IContainerBuilder builder)
-        {
-            var options = builder.RegisterMessagePipe();
-            builder.RegisterBuildCallback(c => GlobalMessagePipe.SetProvider(c.AsServiceProvider()));
-            //builder.RegisterMessageBroker<>(options);
-        }
-
-        private void RegisterModules(IContainerBuilder builder)
-        {
-            builder.Register<PlayerModule>(Lifetime.Singleton).AsSelf().AsImplementedInterfaces();
-        }
-
-        private void RegisterStates(IContainerBuilder builder)
-        {
-            builder.Register<IGameStateMachine, GameStateMachine>(Lifetime.Singleton).As<IInitializable>();
-            builder.Register<BootstrapState>(Lifetime.Singleton);
-            builder.Register<MenuState>(Lifetime.Singleton);
-            builder.Register<GameplayState>(Lifetime.Singleton);
-            builder.Register<ResultsState>(Lifetime.Singleton);
-        }
-
-        private void RegisterServices(IContainerBuilder builder)
+        private void RegisterInfrastructure(IContainerBuilder builder)
         {
             builder.Register<SceneLoader>(Lifetime.Singleton);
             builder.Register<GameInput>(Lifetime.Singleton);
             builder.Register<ConfigProvider>(Lifetime.Singleton);
             builder.Register<SaveService>(Lifetime.Singleton);
+        }
+        
+        private void RegisterMeta(IContainerBuilder builder)
+        {
+            builder.Register<GameSession>(Lifetime.Singleton);
+        }
+        
+        private void RegisterMessages(IContainerBuilder builder)
+        {
+            var options = builder.RegisterMessagePipe();
+            builder.RegisterMessageBroker<DamageApplied>(options);
+            builder.RegisterMessageBroker<EntityDied>(options);
+            builder.RegisterMessageBroker<BattleEnded>(options);
+        }
+
+        private void RegisterStates(IContainerBuilder builder)
+        {
+            builder.RegisterEntryPoint<GameStateMachine>().As<IGameStateMachine>();
+            builder.Register<BootstrapState>(Lifetime.Singleton);
+            builder.Register<MenuState>(Lifetime.Singleton);
+            builder.Register<GameplayState>(Lifetime.Singleton);
+            builder.Register<ResultsState>(Lifetime.Singleton);
         }
     }
 }

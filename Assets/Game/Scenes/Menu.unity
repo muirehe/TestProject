@@ -171,6 +171,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MenuView
   playButton: {fileID: 1217724482}
+  levelConfig: {fileID: 11400000, guid: aeabfbee4d02e9f489d13eb8d1bccfe8, type: 2}
 --- !u!222 &175039518
 CanvasRenderer:
   m_ObjectHideFlags: 0

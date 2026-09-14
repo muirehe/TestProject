@@ -109,7 +109,7 @@ namespace Presentation
             if (_prefabsIndexed) return;
             _prefabsIndexed = true;
 
-            var windows = Resources.LoadAll<WindowBase>("");
+            var windows = Resources.LoadAll<WindowBase>("Prefabs");
             foreach (var window in windows)
             {
                 var type = window.GetType();

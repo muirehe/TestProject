@@ -7,8 +7,8 @@ namespace Presentation.Player
 {
     public class WalkSwayingMaker : MonoBehaviour
     {
-        [field: SerializeField] public CharacterController characterController;
-        [field: SerializeField] public Transform cameraRoot;
+        [SerializeField] private CharacterController characterController;
+        [SerializeField] private Transform cameraRoot;
 
         private Vector3 _startPosition;
         private float _phase;

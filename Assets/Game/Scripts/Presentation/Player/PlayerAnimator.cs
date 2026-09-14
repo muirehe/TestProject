@@ -1,22 +1,22 @@
-using Infrastructure.Input;
 using UnityEngine;
-using VContainer;
 
 namespace Presentation.Player
 {
     public class PlayerAnimator : MonoBehaviour
     {
-        [SerializeField] public Animator weaponAnimator;
-        [SerializeField] public string attackAnimKey = "Attack";
+        [SerializeField] private Animator weaponAnimator;
+        [SerializeField] private string attackAnimKey = "Attack";
 
-        private int AttackHash => Animator.StringToHash(attackAnimKey);
+        private int _attackHash; 
 
-        [Inject] private GameInput _gameInput;
-        
-        private void Update()
+        private void Awake()
         {
-            if (_gameInput.Player.Attack.WasPressedThisFrame())
-                weaponAnimator.SetTrigger(AttackHash);
+            _attackHash = Animator.StringToHash(attackAnimKey);
+        }
+        
+        public void PlayAttack()
+        {
+            weaponAnimator.SetTrigger(_attackHash);
         }
 
     }
