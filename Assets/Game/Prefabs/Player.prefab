@@ -238,12 +238,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3022801974517413589}
-  - component: {fileID: 4627455700586851343}
-  - component: {fileID: 315204651166939178}
-  - component: {fileID: 1915400422052653201}
-  - component: {fileID: 6904596617439082612}
   - component: {fileID: 2899949403985773661}
+  - component: {fileID: 4627455700586851343}
   - component: {fileID: 3217053764110823875}
+  - component: {fileID: 6904596617439082612}
+  - component: {fileID: 1915400422052653201}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -267,6 +266,21 @@ Transform:
   - {fileID: 9195580336140516848}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2899949403985773661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7084131297787295881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31f6b637877d4b1f898bb84bdd88779d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Presentation.Player.PlayerView
+  tr: {fileID: 3022801974517413589}
+  playerMoveController: {fileID: 4627455700586851343}
+  playerAttackController: {fileID: 3217053764110823875}
 --- !u!114 &4627455700586851343
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -283,7 +297,7 @@ MonoBehaviour:
   tr: {fileID: 3022801974517413589}
   cameraRoot: {fileID: 4182549942039737024}
   playerCamera: {fileID: 3998353370096925972}
---- !u!114 &315204651166939178
+--- !u!114 &3217053764110823875
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -292,11 +306,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 7084131297787295881}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f45d3f3eb22c4b668879f880ca4d62fa, type: 3}
+  m_Script: {fileID: 11500000, guid: f58b0aa0c86948ffb4a6ca6d2a5c2350, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Presentation.Player.PlayerAnimator
-  weaponAnimator: {fileID: 1937005414201359851}
-  attackAnimKey: Attack
+  m_EditorClassIdentifier: Assembly-CSharp::Presentation.Player.PlayerAttackController
+  weaponAnimator: {fileID: 6477425297935418185}
+  cameraRoot: {fileID: 4182549942039737024}
+--- !u!114 &6904596617439082612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7084131297787295881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc4e637c4007492197b7099313c9233b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Presentation.Player.WalkSwayingMaker
+  characterController: {fileID: 1915400422052653201}
+  cameraRoot: {fileID: 4182549942039737024}
 --- !u!143 &1915400422052653201
 CharacterController:
   m_ObjectHideFlags: 0
@@ -322,49 +350,6 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &6904596617439082612
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7084131297787295881}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc4e637c4007492197b7099313c9233b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Presentation.Player.WalkSwayingMaker
-  characterController: {fileID: 1915400422052653201}
-  cameraRoot: {fileID: 4182549942039737024}
---- !u!114 &2899949403985773661
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7084131297787295881}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31f6b637877d4b1f898bb84bdd88779d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Presentation.Player.PlayerView
-  playerMoveController: {fileID: 4627455700586851343}
-  playerAttackController: {fileID: 3217053764110823875}
---- !u!114 &3217053764110823875
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7084131297787295881}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f58b0aa0c86948ffb4a6ca6d2a5c2350, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Presentation.Player.PlayerAttackController
-  playerAnimator: {fileID: 315204651166939178}
-  tr: {fileID: 3022801974517413589}
-  cameraRoot: {fileID: 4182549942039737024}
 --- !u!1001 &4313528412678979573
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -422,13 +407,19 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b97c89fab38ceec4eb88fbef9f06dc72, type: 3}
---- !u!95 &1937005414201359851 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 2395100357718049310, guid: b97c89fab38ceec4eb88fbef9f06dc72, type: 3}
-  m_PrefabInstance: {fileID: 4313528412678979573}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4271947716751937080 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 42145295148167629, guid: b97c89fab38ceec4eb88fbef9f06dc72, type: 3}
   m_PrefabInstance: {fileID: 4313528412678979573}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6477425297935418185 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7077640743713062076, guid: b97c89fab38ceec4eb88fbef9f06dc72, type: 3}
+  m_PrefabInstance: {fileID: 4313528412678979573}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f45d3f3eb22c4b668879f880ca4d62fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Presentation.Player.WeaponAnimator

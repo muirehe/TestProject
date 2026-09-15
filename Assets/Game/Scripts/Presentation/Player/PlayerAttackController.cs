@@ -9,22 +9,15 @@ namespace Presentation.Player
 {
     public class PlayerAttackController : MonoBehaviour
     {
-        [SerializeField] private PlayerAnimator playerAnimator;
+        [SerializeField] private WeaponAnimator weaponAnimator;
         [SerializeField] private Transform cameraRoot;
 
         private Unit _unit;
         private float _attackCooldown;
 
-        private DamageService _damageService;
-        private GameInput _gameInput;
+        [Inject] private DamageService _damageService;
+        [Inject]  private GameInput _gameInput;
 
-        [Inject]
-        private void Inject(DamageService damageService, GameInput gameInput)
-        {
-            _damageService = damageService;
-            _gameInput = gameInput;
-        }
-        
         public void Bind(Unit unit) => _unit = unit;
 
         private void Update()
@@ -40,7 +33,7 @@ namespace Presentation.Player
             if (_gameInput.Player.Attack.WasPressedThisFrame() && _attackCooldown <= 0f)
             {
                 _attackCooldown = _unit.Get(StatType.AttackCooldown);
-                playerAnimator.PlayAttack();
+                weaponAnimator.PlayAttack();
                 if (!Physics.Raycast(cameraRoot.position, cameraRoot.forward, out RaycastHit hit,
                         _unit.Get(StatType.AttackDistance),
                         LayerUtils.PlayerHitTargets, QueryTriggerInteraction.Ignore)) return;

@@ -9,8 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5396448490082532018}
-  - component: {fileID: 7570814283261332159}
   - component: {fileID: 2205406882244091343}
+  - component: {fileID: 7570814283261332159}
+  - component: {fileID: 4861261832374788991}
+  - component: {fileID: 2525359050021738884}
   m_Layer: 7
   m_Name: Enemy
   m_TagString: Untagged
@@ -35,18 +37,6 @@ Transform:
   - {fileID: 8967190803536820592}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7570814283261332159
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5604759710457778438}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11108308650f73144bb8aa25a666aa06, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Presentation.Enemy.EnemyController
 --- !u!114 &2205406882244091343
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59,8 +49,63 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee38b74ee3c74046a46e2fe2fec0abf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Presentation.Enemy.EnemyView
-  enemyController: {fileID: 7570814283261332159}
+  enemyMoveController: {fileID: 7570814283261332159}
+  enemyAttackController: {fileID: 4861261832374788991}
   healthView: {fileID: 5842708671826122224}
+--- !u!114 &7570814283261332159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5604759710457778438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11108308650f73144bb8aa25a666aa06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Presentation.Enemy.EnemyController
+  tr: {fileID: 5396448490082532018}
+  characterController: {fileID: 2525359050021738884}
+--- !u!114 &4861261832374788991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5604759710457778438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90cceaaa029e4511b29a9536f210ec85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Presentation.Enemy.EnemyAttackController
+  weaponAnimator: {fileID: 4175434326932650980}
+  tr: {fileID: 5396448490082532018}
+  characterController: {fileID: 2525359050021738884}
+--- !u!143 &2525359050021738884
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5604759710457778438}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7240104051788724241
 GameObject:
   m_ObjectHideFlags: 0
@@ -72,7 +117,6 @@ GameObject:
   - component: {fileID: 1242680840332093449}
   - component: {fileID: 6755919918062410183}
   - component: {fileID: 1827720910949630142}
-  - component: {fileID: 5687168367002230724}
   m_Layer: 7
   m_Name: EnemyCapsule
   m_TagString: Untagged
@@ -153,29 +197,6 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &5687168367002230724
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7240104051788724241}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &6614322908906112856
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -228,15 +249,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: WeaponStick
       objectReference: {fileID: 0}
-    - target: {fileID: 6488003362550709619, guid: b97c89fab38ceec4eb88fbef9f06dc72, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b97c89fab38ceec4eb88fbef9f06dc72, type: 3}
+--- !u!114 &4175434326932650980 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7077640743713062076, guid: b97c89fab38ceec4eb88fbef9f06dc72, type: 3}
+  m_PrefabInstance: {fileID: 6614322908906112856}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f45d3f3eb22c4b668879f880ca4d62fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Presentation.Player.WeaponAnimator
 --- !u!4 &6584105734379763349 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 42145295148167629, guid: b97c89fab38ceec4eb88fbef9f06dc72, type: 3}

@@ -22,22 +22,25 @@ namespace Infrastructure.GameStateMachine.States
         private readonly GameSession _gameSession;
         private readonly IGameStateMachine _gameStateMachine;
         private readonly ISubscriber<BattleEnded> _battleEndedSubscriber;
+        private readonly ISubscriber<ExitEntered> _exitEnteredSubscriber;
 
         public GameplayState(WindowManager windowManager, SceneLoader sceneLoader, GameInput gameInput,
-            IGameStateMachine gameStateMachine, ISubscriber<BattleEnded> battleEndedSubscriber, GameSession gameSession)
+            IGameStateMachine gameStateMachine, ISubscriber<BattleEnded> battleEndedSubscriber, ISubscriber<ExitEntered> exitEnteredSubscriber, GameSession gameSession)
         {
             _sceneLoader = sceneLoader;
             _gameInput = gameInput;
             _windowManager = windowManager;
             _gameStateMachine = gameStateMachine;
             _battleEndedSubscriber = battleEndedSubscriber;
+            _exitEnteredSubscriber = exitEnteredSubscriber;
             _gameSession = gameSession;
         }
 
         public void Enter()
         {
             _ctx = new CancellationTokenSource();
-            _disposable = DisposableBag.Create(_battleEndedSubscriber.Subscribe(OnBattleEnded));
+            _disposable = DisposableBag.Create(_battleEndedSubscriber.Subscribe(OnBattleEnded),
+                _exitEnteredSubscriber.Subscribe(OnExitEntered));
             EnterAsync(_ctx.Token).Forget();
         }
 
@@ -54,7 +57,14 @@ namespace Infrastructure.GameStateMachine.States
 
         private void OnBattleEnded(BattleEnded e)
         {
-            _gameSession.IsVictory = e.IsVictory;
+            if (e.IsVictory) return;
+            _gameSession.IsVictory = false;
+            _gameStateMachine.Enter<ResultsState>();
+        }
+
+        private void OnExitEntered(ExitEntered e)
+        {
+            _gameSession.IsVictory = true;
             _gameStateMachine.Enter<ResultsState>();
         }
 

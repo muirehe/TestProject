@@ -1,8 +1,8 @@
 using UnityEngine;
 
-namespace Presentation.Player
+namespace Presentation
 {
-    public class PlayerAnimator : MonoBehaviour
+    public class WeaponAnimator : MonoBehaviour
     {
         [SerializeField] private Animator weaponAnimator;
         [SerializeField] private string attackAnimKey = "Attack";

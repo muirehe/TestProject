@@ -9,4 +9,8 @@ namespace Gameplay.Battle
             IsVictory = isVictory;
         }
     }
+    
+    public readonly struct ExitEntered
+    {
+    }
 }

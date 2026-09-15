@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 7145208439698333531}
   - component: {fileID: 8680419726633382602}
   - component: {fileID: 2395100357718049310}
-  m_Layer: 6
+  - component: {fileID: 7077640743713062076}
+  m_Layer: 0
   m_Name: WeaponStick
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -113,3 +114,17 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &7077640743713062076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6488003362550709619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f45d3f3eb22c4b668879f880ca4d62fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Presentation.Player.WeaponAnimator
+  weaponAnimator: {fileID: 2395100357718049310}
+  attackAnimKey: Attack

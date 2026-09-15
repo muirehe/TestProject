@@ -7,8 +7,10 @@ namespace Presentation.Level
     {
         [SerializeField] private List<SpawnPoint> spawnPoints;
         [SerializeField] private SpawnTrigger spawnTrigger;
+        [SerializeField] private ExitTrigger exitTrigger;
         
         public List<SpawnPoint> SpawnPoints => spawnPoints;
         public SpawnTrigger SpawnTrigger => spawnTrigger;
+        public ExitTrigger ExitTrigger => exitTrigger;
     }
 }

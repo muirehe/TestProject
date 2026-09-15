@@ -25,10 +25,11 @@ namespace Gameplay.Battle
         private readonly IObjectResolver _objectResolver;
         private readonly ISubscriber<EntityDied> _entityDiedSubscriber;
         private readonly IPublisher<BattleEnded> _battleEndedPublisher;
+        private readonly IPublisher<ExitEntered> _exitEnteredPublisher;
 
         public BattleController(GameSession gameSession, LevelView levelView, PlayerModel playerModel,
             IObjectResolver objectResolver, ISubscriber<EntityDied> subscriber,
-            IPublisher<BattleEnded> publisher)
+            IPublisher<BattleEnded> publisher, IPublisher<ExitEntered> exitEnteredPublisher)
         {
             _gameSession = gameSession;
             _playerModel = playerModel;
@@ -36,12 +37,14 @@ namespace Gameplay.Battle
             _objectResolver = objectResolver;
             _entityDiedSubscriber = subscriber;
             _battleEndedPublisher = publisher;
+            _exitEnteredPublisher = exitEnteredPublisher;
         }
 
         public void Initialize()
         {
             _disposable = DisposableBag.Create(_entityDiedSubscriber.Subscribe(OnEntityDied));
             _levelView.SpawnTrigger.PlayerEntered += SpawnEnemies;
+            _levelView.ExitTrigger.PlayerEntered += OnExitEntered;
         }
 
         private void SpawnEnemies()
@@ -102,11 +105,14 @@ namespace Gameplay.Battle
         {
             _battleEndedPublisher.Publish(new BattleEnded(isVictory));
         }
+        
+        private void OnExitEntered() =>  _exitEnteredPublisher.Publish(new ExitEntered());
 
         public void Dispose()
         {
             _disposable?.Dispose();
             _levelView.SpawnTrigger.PlayerEntered -= SpawnEnemies;
+            _levelView.ExitTrigger.PlayerEntered -= OnExitEntered;
         }
     }
 }

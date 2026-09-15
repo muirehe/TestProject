@@ -7,9 +7,12 @@ namespace Presentation.Player
 {
     public class PlayerView : UnitView
     {
+        [SerializeField] private Transform tr;
         [SerializeField] private PlayerMoveController playerMoveController;
         [SerializeField] private PlayerAttackController playerAttackController;
 
+        public Transform Tr => tr;
+        
         [Inject]
         private void Inject(PlayerModel playerModel) => Init(playerModel.Unit);
 
