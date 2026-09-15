@@ -1,7 +1,8 @@
-﻿using Gameplay.Battle;
-using Gameplay.Combat;
+﻿using Gameplay.Combat;
 using Gameplay.Player;
+using Presentation.Abilities;
 using Presentation.Level;
+using Presentation.Level.Battle;
 using Presentation.Player;
 using UnityEngine;
 using VContainer;
@@ -18,9 +19,17 @@ namespace Bootstrap
         {
             builder.RegisterInstance(levelView);
             builder.RegisterInstance(playerView);
+            
             builder.Register<BattleController>(Lifetime.Scoped).AsSelf().As<IInitializable>();
             builder.Register<DamageService>(Lifetime.Scoped);
             builder.Register<PlayerModel>(Lifetime.Scoped);
+            RegisterExecutors(builder);
+        }
+
+        private void RegisterExecutors(IContainerBuilder builder)
+        {
+            builder.Register<DashExecutor>(Lifetime.Scoped).As<IAbilityExecutor>();
+            builder.Register<AoeExecutor>(Lifetime.Scoped).As<IAbilityExecutor>();
         }
     }
 }

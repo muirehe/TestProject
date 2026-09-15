@@ -1,3 +1,5 @@
+using Configs;
+
 namespace Gameplay.Combat
 {
     public readonly struct DamageApplied
@@ -24,6 +26,18 @@ namespace Gameplay.Combat
         public EntityDied(Unit target)
         {
             Target = target;
+        }
+    }
+    
+    public readonly struct AbilityUsed
+    {
+        public readonly Unit Unit;
+        public readonly AbilityConfig AbilityConfig;
+
+        public AbilityUsed(Unit unit, AbilityConfig abilityConfig)
+        {
+            Unit = unit;
+            AbilityConfig = abilityConfig;
         }
     }
 }

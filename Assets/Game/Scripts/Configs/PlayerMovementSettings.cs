@@ -3,8 +3,8 @@ using UnityEngine;
 
 namespace Configs
 {
-    [CreateAssetMenu(fileName = "InputSettings", menuName = "Configs/InputSettings")]
-    public class InputSettings : DefinitionConfig, ISingleDefinition
+    [CreateAssetMenu(fileName = "PlayerMovementSettings", menuName = "Configs/PlayerMovementSettings")]
+    public class PlayerMovementSettings : DefinitionConfig, ISingleDefinition
     {
         [field: SerializeField] public float SprintSpeedMultiplier { get; private set; } = 2f;
         [field: SerializeField] public float CursorSensitivity { get; private set; } = 0.1f;

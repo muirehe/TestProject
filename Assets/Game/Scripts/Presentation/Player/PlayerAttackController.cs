@@ -10,6 +10,7 @@ namespace Presentation.Player
     public class PlayerAttackController : MonoBehaviour
     {
         [SerializeField] private WeaponAnimator weaponAnimator;
+        [SerializeField] private Transform tr;
         [SerializeField] private Transform cameraRoot;
 
         private Unit _unit;

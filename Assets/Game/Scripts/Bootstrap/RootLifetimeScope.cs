@@ -1,4 +1,3 @@
-using Gameplay.Battle;
 using Gameplay.Combat;
 using Infrastructure.ConfigSystem;
 using Infrastructure.GameStateMachine;
@@ -9,6 +8,7 @@ using Infrastructure.SceneSystem;
 using MessagePipe;
 using Meta;
 using Presentation;
+using Presentation.Level.Battle;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
@@ -49,6 +49,8 @@ namespace Bootstrap
             builder.RegisterMessageBroker<DamageApplied>(options);
             builder.RegisterMessageBroker<EntityDied>(options);
             builder.RegisterMessageBroker<BattleEnded>(options);
+            builder.RegisterMessageBroker<ExitEntered>(options);
+            builder.RegisterMessageBroker<AbilityUsed>(options);
         }
 
         private void RegisterStates(IContainerBuilder builder)

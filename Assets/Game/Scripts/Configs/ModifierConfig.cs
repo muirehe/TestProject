@@ -12,7 +12,9 @@ namespace Configs
         CriticalChance,
         CriticalDamageMultiplier,
         Armor,
-        AttackDistance
+        AttackDistance,
+        AbilityCooldown,
+        DashDistance
     }
     
     public enum CalculationType
@@ -20,7 +22,7 @@ namespace Configs
         Abs,
         Pct,
     }
-    
+
     [CreateAssetMenu(fileName = "ModifierConfig", menuName = "Configs/ModifierConfig")]
     public class ModifierConfig : DefinitionConfig, IDefinitionById
     {

@@ -242,6 +242,7 @@ GameObject:
   - component: {fileID: 4627455700586851343}
   - component: {fileID: 3217053764110823875}
   - component: {fileID: 6904596617439082612}
+  - component: {fileID: 6643182899129462091}
   - component: {fileID: 1915400422052653201}
   m_Layer: 6
   m_Name: Player
@@ -281,6 +282,7 @@ MonoBehaviour:
   tr: {fileID: 3022801974517413589}
   playerMoveController: {fileID: 4627455700586851343}
   playerAttackController: {fileID: 3217053764110823875}
+  abilityController: {fileID: 6643182899129462091}
 --- !u!114 &4627455700586851343
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -310,7 +312,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Presentation.Player.PlayerAttackController
   weaponAnimator: {fileID: 6477425297935418185}
-  cameraRoot: {fileID: 4182549942039737024}
+  tr: {fileID: 3022801974517413589}
 --- !u!114 &6904596617439082612
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -325,6 +327,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Presentation.Player.WalkSwayingMaker
   characterController: {fileID: 1915400422052653201}
   cameraRoot: {fileID: 4182549942039737024}
+--- !u!114 &6643182899129462091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7084131297787295881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ab62a69c3dc47e9b4892d01d4955bb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Presentation.Player.PlayerAbilityController
+  characterController: {fileID: 1915400422052653201}
+  tr: {fileID: 3022801974517413589}
 --- !u!143 &1915400422052653201
 CharacterController:
   m_ObjectHideFlags: 0

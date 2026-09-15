@@ -1,4 +1,4 @@
-namespace Gameplay.Battle
+namespace Presentation.Level.Battle
 {
     public readonly struct BattleEnded
     {
@@ -9,7 +9,7 @@ namespace Gameplay.Battle
             IsVictory = isVictory;
         }
     }
-    
+
     public readonly struct ExitEntered
     {
     }

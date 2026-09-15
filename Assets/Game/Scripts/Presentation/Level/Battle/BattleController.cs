@@ -6,13 +6,12 @@ using Gameplay.Player;
 using MessagePipe;
 using Meta;
 using Presentation.Enemy;
-using Presentation.Level;
 using UnityEngine;
 using Utils;
 using VContainer;
 using VContainer.Unity;
 
-namespace Gameplay.Battle
+namespace Presentation.Level.Battle
 {
     public class BattleController : IInitializable, IDisposable
     {

@@ -1,12 +1,12 @@
 using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
-using Gameplay.Battle;
 using Infrastructure.Input;
 using Infrastructure.SceneSystem;
 using MessagePipe;
 using Meta;
 using Presentation;
+using Presentation.Level.Battle;
 using Presentation.Windows;
 using UnityEngine;
 

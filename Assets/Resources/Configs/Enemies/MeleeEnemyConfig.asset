@@ -17,6 +17,8 @@ MonoBehaviour:
   <Armor>k__BackingField: 0
   <Weapon>k__BackingField: {fileID: 11400000, guid: 50e060710aa3ab1479428c2f981c3f82, type: 2}
   <Modifiers>k__BackingField: []
+  <Abilities>k__BackingField:
+  - {fileID: 11400000, guid: 5bf68585e3e4b2742adba4dde10864b6, type: 2}
   <Might>k__BackingField: 2
   <Weight>k__BackingField: 1
   <Prefab>k__BackingField: {fileID: 2205406882244091343, guid: 9bbb7a31b2fdf14478434c739ee99bd7, type: 3}
