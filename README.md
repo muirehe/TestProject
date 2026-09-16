@@ -4,7 +4,7 @@
 
 Играть в браузере: https://muirehe.github.io/TestProject/
 
-Видео прохождения: [Media/gameplay.mp4](https://github.com/user-attachments/assets/2224d8fb-c8df-40d4-a1e7-d67e3e1267f6)
+Видео прохождения: [[Media/gameplay.mp4](https://github.com/user-attachments/assets/2224d8fb-c8df-40d4-a1e7-d67e3e1267f6)](https://github.com/user-attachments/assets/2224d8fb-c8df-40d4-a1e7-d67e3e1267f6)
 
 ## Запуск
 
