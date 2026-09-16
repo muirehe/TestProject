@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Runtime.InteropServices;
 using MessagePack;
 using UnityEngine;
 
@@ -9,6 +10,12 @@ namespace Infrastructure.SaveSystem
     public class SaveService
     {
         private static string SavePath => Application.persistentDataPath;
+
+#if UNITY_WEBGL && !UNITY_EDITOR
+        // В WebGL файлы попадают в IndexedDB только после FS.syncfs (Plugins/WebGL/FileSync.jslib)
+        [DllImport("__Internal")]
+        private static extern void SyncFiles();
+#endif
 
         private readonly IEnumerable<IModule> _modules;
 
@@ -38,6 +45,9 @@ namespace Infrastructure.SaveSystem
             BeforeSave?.Invoke();
             foreach (var module in _modules)
                 module.Save(dir);
+#if UNITY_WEBGL && !UNITY_EDITOR
+            SyncFiles();
+#endif
             Debug.Log($"Save: all modules saved in {dir}");
         }
 
