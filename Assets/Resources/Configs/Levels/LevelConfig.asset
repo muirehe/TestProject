@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8adba1712db44f8d88f3c2b00fcfe15c, type: 3}
+  m_Name: LevelConfig
+  m_EditorClassIdentifier: Assembly-CSharp::Configs.LevelConfig
+  <Enemies>k__BackingField:
+  - {fileID: 11400000, guid: d2cf316a25e52c14999b85f0000103a9, type: 2}
+  - {fileID: 11400000, guid: fb8dcb19de30c8b4a84fa8342d2233d6, type: 2}
+  <EnemyMight>k__BackingField: 3
