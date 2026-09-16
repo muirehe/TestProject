@@ -4,8 +4,7 @@
 
 Играть в браузере: https://muirehe.github.io/TestProject/
 
-Видео прохождения: [[Media/gameplay.mp4](https://github.com/user-attachments/assets/2224d8fb-c8df-40d4-a1e7-d67e3e1267f6)](https://github.com/user-attachments/assets/2224d8fb-c8df-40d4-a1e7-d67e3e1267f6)
-
+Видео прохождения: https://github.com/user-attachments/assets/2224d8fb-c8df-40d4-a1e7-d67e3e1267f6
 ## Запуск
 
 Unity 6000.5.10f1, URP. Открыть сцену `Assets/Game/Scenes/Boot.unity` и нажать Play. Сцены `Boot`, `Menu` и `Gameplay` уже добавлены в Build Settings.
