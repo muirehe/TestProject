@@ -9,16 +9,14 @@ namespace Presentation.Enemy
     public class EnemyView : UnitView
     {
         [SerializeField] private EnemyMoveController enemyMoveController;
-        [SerializeField] private EnemyAttackController enemyAttackController;
         [SerializeField] private HealthView healthView;
-        [SerializeField] private AbilityController abilityController;
+        [SerializeField] private EnemyAbilityController abilityController;
 
         protected override void OnInit(Unit unit)
         {
             enemyMoveController.Bind(unit);
-            enemyAttackController.Bind(unit);
-            healthView.Bind(unit);
             abilityController.Bind(unit);
+            healthView.Bind(unit);
         }
         
         public void Die()

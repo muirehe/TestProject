@@ -1,5 +1,6 @@
 ﻿using Gameplay.Combat;
 using Gameplay.Player;
+using Gameplay.Statistics;
 using Presentation.Abilities;
 using Presentation.Level;
 using Presentation.Level.Battle;
@@ -22,6 +23,7 @@ namespace Bootstrap
             
             builder.Register<BattleController>(Lifetime.Scoped).AsSelf().As<IInitializable>();
             builder.Register<DamageService>(Lifetime.Scoped);
+            builder.Register<BattleStatisticsService>(Lifetime.Scoped).As<IInitializable>();
             builder.Register<PlayerModel>(Lifetime.Scoped);
             RegisterExecutors(builder);
         }
@@ -30,6 +32,7 @@ namespace Bootstrap
         {
             builder.Register<DashExecutor>(Lifetime.Scoped).As<IAbilityExecutor>();
             builder.Register<AoeExecutor>(Lifetime.Scoped).As<IAbilityExecutor>();
+            builder.Register<MeleeAttackExecutor>(Lifetime.Scoped).As<IAbilityExecutor>();
         }
     }
 }

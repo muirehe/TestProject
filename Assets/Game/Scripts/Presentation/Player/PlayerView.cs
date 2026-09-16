@@ -1,6 +1,5 @@
 using Gameplay.Combat;
 using Gameplay.Player;
-using Presentation.Abilities;
 using UnityEngine;
 using VContainer;
 
@@ -10,8 +9,7 @@ namespace Presentation.Player
     {
         [SerializeField] private Transform tr;
         [SerializeField] private PlayerMoveController playerMoveController;
-        [SerializeField] private PlayerAttackController playerAttackController;
-        [SerializeField] private AbilityController abilityController;
+        [SerializeField] private PlayerAbilityController abilityController;
 
         public Transform Tr => tr;
         
@@ -21,7 +19,6 @@ namespace Presentation.Player
         protected override void OnInit(Unit unit)
         {
             playerMoveController.Bind(unit);
-            playerAttackController.Bind(unit);
             abilityController.Bind(unit);
         }
     }

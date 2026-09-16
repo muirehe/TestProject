@@ -42,12 +42,13 @@ namespace Presentation.Level.Battle
         public void Initialize()
         {
             _disposable = DisposableBag.Create(_entityDiedSubscriber.Subscribe(OnEntityDied));
-            _levelView.SpawnTrigger.PlayerEntered += SpawnEnemies;
+            _levelView.SpawnTrigger.PlayerEntered += OnPlayerEntered;
             _levelView.ExitTrigger.PlayerEntered += OnExitEntered;
         }
 
-        private void SpawnEnemies()
+        private void OnPlayerEntered()
         {
+            _gameSession.BattleStats.StartTime = Time.time;
             if (_levelView.SpawnPoints.Count == 0)
             {
                 Debug.LogError("[Battle] spawn points count is 0");
@@ -102,6 +103,7 @@ namespace Presentation.Level.Battle
 
         private void EndBattle(bool isVictory)
         {
+            _gameSession.BattleStats.Duration = Time.time - _gameSession.BattleStats.StartTime;
             _battleEndedPublisher.Publish(new BattleEnded(isVictory));
         }
         
@@ -110,7 +112,7 @@ namespace Presentation.Level.Battle
         public void Dispose()
         {
             _disposable?.Dispose();
-            _levelView.SpawnTrigger.PlayerEntered -= SpawnEnemies;
+            _levelView.SpawnTrigger.PlayerEntered -= OnPlayerEntered;
             _levelView.ExitTrigger.PlayerEntered -= OnExitEntered;
         }
     }

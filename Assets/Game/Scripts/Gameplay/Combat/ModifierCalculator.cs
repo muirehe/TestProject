@@ -12,7 +12,7 @@ namespace Gameplay.Combat
             var value = statType switch
             {
                 StatType.MaxHealth => unitConfig.MaxHealth,
-                StatType.AttackCooldown => unitConfig.Weapon.AttackCooldown,
+                StatType.AttackCooldown => unitConfig.Weapon.Cooldown,
                 StatType.Damage => unitConfig.Weapon.Damage,
                 StatType.MoveSpeed => unitConfig.MoveSpeed,
                 StatType.CriticalChance => unitConfig.Weapon.CriticalChance,

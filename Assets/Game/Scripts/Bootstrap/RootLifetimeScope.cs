@@ -41,6 +41,7 @@ namespace Bootstrap
         private void RegisterMeta(IContainerBuilder builder)
         {
             builder.Register<GameSession>(Lifetime.Singleton);
+            builder.Register<ResourceModule>(Lifetime.Singleton).AsSelf().As<IModule>();
         }
         
         private void RegisterMessages(IContainerBuilder builder)

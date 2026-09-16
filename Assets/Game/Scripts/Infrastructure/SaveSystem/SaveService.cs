@@ -21,6 +21,7 @@ namespace Infrastructure.SaveSystem
         public event Action AfterLoad;
 
         public void LoadAll() => LoadAll(SavePath);
+        public void SaveAll() => SaveAll(SavePath);
 
         public void LoadAll(string dir)
         {

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Configs;
 using UnityEngine;
 
@@ -8,6 +7,7 @@ namespace Gameplay.Combat
     public class Unit
     {
         private readonly Dictionary<AbilityConfig, float> _abilitiesReadyTime = new();
+
         public Unit(UnitConfig unitConfig)
         {
             Config = unitConfig;
@@ -17,6 +17,7 @@ namespace Gameplay.Combat
 
         private void InitAbilities()
         {
+            if (Config.Weapon) _abilitiesReadyTime[Config.Weapon] = 0f;
             foreach (var abilityConfig in Config.Abilities)
                 _abilitiesReadyTime[abilityConfig] = 0f;
         }
@@ -44,11 +45,11 @@ namespace Gameplay.Combat
             return float.MaxValue;
         }
 
-        public bool TryStartCooldownAbility(AbilityConfig config)
+        public bool TryStartCooldownAbility(AbilityConfig config, float cooldown)
         {
             if (IsDead || !_abilitiesReadyTime.TryGetValue(config, out float readyTime) ||
                 Time.time < readyTime) return false;
-            _abilitiesReadyTime[config] = Time.time + Modify(config.Cooldown, StatType.AbilityCooldown);
+            _abilitiesReadyTime[config] = Time.time + cooldown;
             return true;
         }
     }

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Presentation.Abilities;
+using UnityEngine;
 
 namespace Configs
 {
@@ -7,5 +8,6 @@ namespace Configs
     {
         [field: SerializeField] public float Radius { get; private set; } = 3f;
         [field: SerializeField] public float Damage { get; private set; } = 20f;
+        [field: SerializeField] public AoeVfx Vfx { get; private set; }
     }
 }

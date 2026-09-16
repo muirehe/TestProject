@@ -70,18 +70,19 @@ namespace Infrastructure.GameStateMachine.States
 
         public void Exit()
         {
-            _ctx?.Cancel();
-            _ctx?.Dispose();
-            _ctx = null;
+            DisposeAll();
             _windowManager.Hide<LoadingWindow>();
             _gameInput.Player.Disable();
             Cursor.lockState = CursorLockMode.None;
-            _disposable?.Dispose();
         }
 
         public void Dispose()
         {
-            _gameInput.Player.Disable();
+            DisposeAll();
+        }
+
+        private void DisposeAll()
+        {
             _ctx?.Cancel();
             _ctx?.Dispose();
             _ctx = null;

@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83c1c3ca42dd496dbf04dfe8c4d5fbd8, type: 3}
   m_Name: StickWeaponConfig
   m_EditorClassIdentifier: Assembly-CSharp::Configs.WeaponConfig
-  <Damage>k__BackingField: 100
-  <AttackCooldown>k__BackingField: 2
+  <Cooldown>k__BackingField: 2
+  <Damage>k__BackingField: 50
   <AttackDistance>k__BackingField: 2
   <CriticalChance>k__BackingField: 0.5
   <CriticalDamageMultiplier>k__BackingField: 2

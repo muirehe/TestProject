@@ -9,11 +9,13 @@ namespace Presentation.Player
 {
     public class PlayerAbilityController : AbilityController
     {
+        [SerializeField] private Transform cameraRoot;
         private InputAction[] _keys;
 
         [Inject] private GameInput _gameInput;
 
         protected override int TargetMask => LayerUtils.EnemyMask;
+        protected override Transform AimOrigin => cameraRoot;
 
         protected override Vector3 AbilityDirection
         {
@@ -29,6 +31,9 @@ namespace Presentation.Player
 
         private void Update()
         {
+            if (_gameInput.Player.Attack.WasPressedThisFrame())
+                TryAttack();
+
             for (var i = 0; i < _keys.Length && i < Unit.Config.Abilities.Count; i++)
             {
                 if (_keys[i].WasPressedThisFrame())
